@@ -1,6 +1,6 @@
 /**~*~*~*
 CIS 22C
-Project: Stack of integers (Destructor)
+Project: Stack of integers (pop)
 
 Written by: Rimma Esheva
 IDE: VS Code
@@ -18,18 +18,18 @@ private:
    };
 
    StackNode *top;          // Pointer to the stack top
-   int length;              // Number of nodes
+   int length;
 
 public:
    Stack_int(){ top = NULL; length = 0; }    //Constructor
-   ~Stack_int();                             // Destructor
+   //~Stack_int();                            // Destructor
 
    // Stack operations
-   // bool isEmpty();
+   bool isEmpty(); /* Write your code here */
    bool push(int);
-   // int pop();
-   // int peek();
-   // int getLength();
+   int pop();
+   int peek();
+   int getLength();
 };
 
 /**~*~*~*
@@ -54,28 +54,18 @@ bool Stack_int::push(int item)
 }
 
 /**~*~*~*
-   Destructor
+  Member function pop pops the value at the top
+  of the stack off, and returns it
+  Assume stack is not empty
 *~**/
-Stack_int::~Stack_int()
-{
-   StackNode *currNode;
+/* Define the pop function */
+int Stack_int::pop() {
+    int item = top->value;
+    top = top->next;
+    --length;
 
-   // Position nodePtr at the top of the stack.
-   currNode = top;
+    return item;
 
-   // Traverse the list deleting each node.
-   while (currNode) 
-   {
-      cout << currNode->value << " - deleted!" << endl;
-      
-      // Allocate current node to a temporary variable, delete once done iterating through
-      StackNode* temp = currNode;
-      currNode = currNode->next;
-      delete temp;
-      temp = NULL;
-      
-   }
-   cout << "Empty stack!" << endl;
 }
 
 int main() {
@@ -89,8 +79,7 @@ int main() {
          if (item <= 0) {
              break;
          }
-         s.push(item);
+         s.pop();
      }
-     
      return 0;
 }
