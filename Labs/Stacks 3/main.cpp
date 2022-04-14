@@ -25,11 +25,18 @@ public:
    //~Stack_int();                            // Destructor
 
    // Stack operations
-   bool isEmpty(); /* Write your code here */
+   bool isEmpty() {
+      if (length == 0) {
+        return true;
+   }
+    else
+        return false;
+    }; 
+    
    bool push(int);
    int pop();
    int peek();
-   int getLength();
+   int getLength() { return length; };
 };
 
 /**~*~*~*
@@ -62,7 +69,7 @@ bool Stack_int::push(int item)
 int Stack_int::pop() {
     int item = top->value;
     top = top->next;
-    --length;
+    length--;
 
     return item;
 
@@ -72,14 +79,23 @@ int main() {
 
      Stack_int s;
      int item;
-
+     
      // Get input data to push onto the stack. Stop once 0 or <0 num is entered.
      while (item > 0) {
          cin >> item;
          if (item <= 0) {
              break;
          }
-         s.pop();
+         s.push(item);
+     }
+     
+     // Pop the items out of the stack and display them one per line.
+     if (s.isEmpty()) {
+        cout << "Empty Stack!" << endl;
+     } else {
+        while (!s.isEmpty()){
+         cout << s.pop() << endl;
+        }
      }
      return 0;
 }
