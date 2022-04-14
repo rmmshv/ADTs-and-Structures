@@ -24,27 +24,17 @@ private:
     int length;
 
 public:
-    Stack(); // Constructor
+    Stack(){ top = NULL; length = 0; } // Constructor
     ~Stack(); // Destructor
 
     // Stack operations:
-    bool push(T);
     T pop();
     T peek();
-    bool isEmpty();
     T getLength();
+    bool push(T);
+    bool isEmpty();
 };
 
-
-/**~*~*~*~*
-  Constructor:
-  Initializes object of the class.
-*~**/
-template <class T>
-T Stack<T>::Stack() {
-    top = NULL;
-    length = 0; 
-}
 
 /**~*~*~*~*
   Member function push inserts the argument onto
@@ -106,7 +96,6 @@ bool Stack<T>::isEmpty() {
     else
         return false;
 }
-
 
 /**~*~*~*~*
   Member function getLength returns the number
