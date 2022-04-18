@@ -72,13 +72,11 @@ bool  Queue_str::push(string item)
 *~**/
 string Queue_str::pop()
 {
-    QueueNode *newNode = new QueueNode; // Allocate a new node and store num there.
-    
-    string item;
-    item = front->value;
-    newNode = front->next;
-    front = newNode;
-
+   string item = front->value;
+   QueueNode *newNode = new QueueNode;
+   newNode = front->next;
+   front = newNode;
+   
    return item;
 }
 
@@ -86,23 +84,24 @@ int main() {
 
      Queue_str que;
      string item;
-    
+     int count = 0; // word counter
+
     // Push items into the queue till "#" is entered
      cin >> item;
      while (item != "#") {
+         count++;
          que.push(item);
          cin >> item;
      }
-     // Once "#" is reached, if queue is not empty, pop and display the items one per line
-     if (item == "#") {
-         if (que.isEmpty() == true) {
-             cout <<"Empty Queue!" <<endl; // If queue is empty, print "Empty Queue!"
-         } else {
-             while (!que.isEmpty()) {
-                 cout <<que.pop() <<endl;
-            } 
-         }
-     }
+    // Once "#" is reached, if queue is not empty, pop and display the items one per line
+    if (item == "#") {
+      if (count <= 0) 
+         cout <<"Empty Queue!" <<endl;
+      while (count > 0){
+         cout <<que.pop() <<endl;
+         count--;
+        }
+    }
        
-     return 0;
+    return 0;
 }
