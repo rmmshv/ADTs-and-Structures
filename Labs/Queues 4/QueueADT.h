@@ -5,35 +5,41 @@ Project: Queue ADT
 Written by: Rimma Esheva
 IDE: VS Code
 *~*/
-
+#include <stdio.h>
 #ifndef STACK_ADT
 #define STACK_ADT
 
 template <class T>
-class QueueADT 
-{
-private:
-   // Structure for the stack nodes
-   struct QueueNode {
-       T value;        // Value in the node
-       QueueNode *next;     // Pointer to next node
-   };
+class QueueNode{
+public:
+    T value;        // Value in the node
+    QueueNode *next;     // Pointer to next node
 
-   QueueNode *front;          // Pointer to the first node
-   QueueNode *rear;           // Pointer to the last node
+    QueueNode(T value) {
+        this->value = value;
+        next = 0;
+    }
+};
+
+
+template <class T>
+class QueueADT {
+public:
+   QueueNode<T> *front;          // Pointer to the first node
+   QueueNode<T> *rear;           // Pointer to the last node
    int length;   
 
-public:
-    QueueADT() {front = rear = NULL; length = 0 }    //Constructor
-   //~Queue_str();                                    // Destructor        
+
+    QueueADT() {front = rear = 0; length = 0; }    //Constructor
+    ~QueueADT();                                         
 
    // Queue operations
-   bool isEmpty() { if (length == 0) return true; }
+   bool isEmpty() { return (length == 0); }
    bool push(T);
    T pop();
    T peek() { return front->value; }
    T peekRear() { return rear->value; }
-   TgetLength() { return length; }
+   int getLength() { return length; }
 };
 
 /**
@@ -42,10 +48,10 @@ public:
  * */
 template <class T>
 bool QueueADT<T>::push(T arg) {
-    QueueADT *newNode; // Pointer to a new node
+    QueueNode<T> *newNode; // Pointer to a new node
 
     // Allocate a new node and store argument there
-    newNode = new QueueADT;
+    newNode = new QueueNode<T>(arg);
     if (!newNode)
         return false;
         newNode->value = arg;
@@ -71,12 +77,28 @@ bool QueueADT<T>::push(T arg) {
  * */
 template <class T>
 T QueueADT<T>::pop() {
+    QueueNode<T> *newNode;
+    
     T item = front->value;
-    QueueADT *newNode = new QueueADT;
     newNode = front->next;
     front = newNode;
 
     return item;
+}
+
+/**
+ * Destructor:
+ * Traverses the queue deleting each node
+ * */
+template <class T>
+QueueADT<T>::~QueueADT(){ 
+    QueueNode<T> *temp;
+    while(front) {
+        temp = front;
+        front = front->next;
+        delete temp;
+    }
+    front = rear = 0;
 }
 
 #endif
