@@ -21,7 +21,6 @@ public:
     }
 };
 
-
 template <class T>
 class QueueADT {
 public:
@@ -78,7 +77,7 @@ bool QueueADT<T>::push(T arg) {
 template <class T>
 T QueueADT<T>::pop() {
     QueueNode<T> *newNode;
-    
+
     T item = front->value;
     newNode = front->next;
     front = newNode;

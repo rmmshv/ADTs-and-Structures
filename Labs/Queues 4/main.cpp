@@ -2,8 +2,8 @@
 CIS 22C
 Project: Queue ADT
 
-Written by:
-IDE:
+Written by: Rimma Esheva
+IDE: VS Code
 *~*/
 
 #include <iostream>
@@ -53,7 +53,6 @@ int main() {
     int back = que_double.peekRear();
 
     // Display the two queues in parallel.
-    
     for (int i = 0; i < len; i++) {
         cout <<que_str.pop() << " " << que_double.pop() <<endl;
     }
