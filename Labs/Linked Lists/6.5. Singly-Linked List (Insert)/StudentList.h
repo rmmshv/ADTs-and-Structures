@@ -1,9 +1,10 @@
 // Specification file for the Student List class
-// Modified by:
-// IDE:
+// Modified by: Rimma Esheva
+// IDE: VS code
 
 #ifndef STUDENTLIST_H
 #define STUDENTLIST_H
+#include "iostream"
 
 struct Student
 {
