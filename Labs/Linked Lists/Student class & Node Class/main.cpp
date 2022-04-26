@@ -62,7 +62,7 @@ void deleteTestDriver(StudentList &list)
     for (int i = 0; toDelete[i] != "#"; i++)
     {
         cout << "   " << toDelete[i];
-        if (list.deleteNode(toDelete[i])) // call the deleteNode member function 
+        if (list.deleteNode(toDelete[i])) 
             cout << " - deleted\n";
         else
             cout << " - not found\n";
