@@ -106,7 +106,7 @@ void LinkedList::displayList() const
      while (pCur)
      {
          // Display the value in this node.
-         pCur->college.hDdisplay();
+         cout <<pCur->college;
          
          // Move to the next node.
          pCur = pCur->next;
@@ -125,12 +125,12 @@ bool LinkedList::searchList(string target, College &dataOut) const
     Node *pCur;         // To move through the list
     
     pCur = head->next;
-    while (pCur != NULL && pCur->college.getCode() < target) {
+    while (pCur && pCur->college.getCode() < target) {
         pCur = pCur->next;
     }
-    if (pCur != NULL && pCur->college.getCode() == target) {
-        found = true;
+    if (pCur && pCur->college.getCode() == target) {
         dataOut = pCur->college;
+        found = true;
     }
     
     return found;

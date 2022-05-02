@@ -149,9 +149,9 @@ void displayManager(const LinkedList &list)
              << " Code  Rank         Name                     Cost  \n"
              << "====== ==== ============================= =========\n";
         
-        /* Write your code here: call displayList */
+        list.displayList();
         
         cout << "====== ==== ============================= =========\n";
     }
-    cout << "Number of colleges in this list: " << /* Write your code here: call getLength */ endl;
+    cout << "Number of colleges in this list: " <<list.getLength() <<endl;
 }

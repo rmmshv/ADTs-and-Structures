@@ -59,3 +59,18 @@ void College::vDisplay() const
     cout << "Cost of Attendance: $" << cost << endl;
 }
 
+//***********************************************************
+// Overloads the stream insertion operator and 
+// replaces the hDisplay() function
+//***********************************************************
+ostream& operator<<(ostream& out, College& c) {
+    cout << left;
+    cout << " " << setw(4) << c.getCode() << "  ";
+    cout << " " << setw(2) << c.getRank() << "  ";
+    cout << " " << setw(27)<< c.getName() << "  ";
+    cout << right;
+    cout << " " << setw(7) << c.getCost() << " ";
+    cout << left << endl;
+
+    return out;
+}

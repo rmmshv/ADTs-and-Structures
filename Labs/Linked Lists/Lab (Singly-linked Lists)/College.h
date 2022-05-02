@@ -6,9 +6,9 @@
 #ifndef COLLEGE_H
 #define COLLEGE_H
 
-//#include<iostream>
+#include<iostream>
 #include<string>
-//#include<cstdlib>
+#include<cstdlib>
 
 // using namespace std;
     //^^^^^ This statement
@@ -47,6 +47,9 @@ class College
         //other functions
         void hDdisplay()const;
         void vDisplay()const;
+
+        //overloading hDdisplay
+        friend std::ostream& operator <<(std::ostream& out, College& c);
 };
 
 #endif
