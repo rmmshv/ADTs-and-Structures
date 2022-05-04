@@ -69,18 +69,19 @@ bool LinkedList::deleteNode(string target)
     bool deleted = false;
     
     // Initialize pointers
+    pPre = head;
     pCur = head->getNext();
 
     // Find node containing the target: Skip all nodes less than the target
-    while (pCur != head && pCur->getData().getCode() != target)
+    while (pCur != NULL && pCur->getData().getCode() < target)
     {
+        pPre = pCur;
         pCur = pCur->getNext();
     }
     
     // If found, delete the node
-    if (pCur->getData().getCode() == target)
+    if (pCur && pCur->getData().getCode() == target)
     {
-        pPre = pCur->getPrev();
         pPre->setNext(pCur->getNext());
         pPre->setPrev(pCur->getPrev());
         
@@ -108,7 +109,7 @@ void LinkedList::displayListForw() const
      while (pCur != head)
      {
          // Display the value in this node.
-         pCur->getData().vDisplay();
+         pCur->getData().hDdisplay();
          
          // Move to the next node.
          pCur = pCur->getNext();
@@ -131,7 +132,7 @@ void LinkedList::displayListBack() const
     // While pCur points to a node, traverse the list
     while (pCur != head) {
         // Display the value in this node
-        pCur->getData().vDisplay();
+        pCur->getData().hDdisplay();
         // Move to the next node
         pCur = pCur->getPrev();
     }
@@ -152,15 +153,13 @@ bool LinkedList::searchList(string target, College &dataOut) const
     // Position pCur: skip the head of the list.
     pCur = head->getNext();
     // Find location: skip all nodes whose code is less than target
-   while (pCur != head && pCur->getData().getCode() < target) {
+   while (pCur && pCur->getData().getCode() < target) {
        pCur = pCur->getNext();
    } 
-    if (pCur->getData().getCode() == target) {
+    if (pCur && pCur->getData().getCode() == target) {
        // If found, copy data to the output parameter, and change the flag to true
-       pCur->getData() = dataOut;
+       dataOut = pCur->getData();
        found = true;
-   }else {
-       found = false;
    }
     return found;
 }
